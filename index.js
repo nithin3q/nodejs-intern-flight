@@ -1,7 +1,10 @@
-require("reflect-metadata");
-const express = require("express");
-const { createConnection } = require("typeorm");
-const routes = require("./src/routes");
+// index.js
+require('reflect-metadata');
+require('dotenv').config();  // Load environment variables
+
+const express = require('express');
+const { createConnection } = require('typeorm');
+const routes = require('./src/routes');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -10,17 +13,17 @@ const PORT = process.env.PORT || 3000;
 app.use(express.json());
 
 // Routes
-app.use("/api", routes);
+app.use('/api', routes);
 
 // Connect to the database and start the server
 createConnection()
   .then(() => {
-    console.log("Connected to MySQL database");
+    console.log('Connected to MySQL database');
 
     app.listen(PORT, () => {
       console.log(`Server is running on port ${PORT}`);
     });
   })
   .catch((error) => {
-    console.error("Database connection error:", error);
+    console.error('Database connection error:', error);
   });
