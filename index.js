@@ -1,7 +1,7 @@
 require("reflect-metadata");
 const express = require("express");
 const { createConnection } = require("typeorm");
-const routes = require("./routes");
+const routes = require("./src/routes");
 
 const app = express();
 const PORT = process.env.PORT || 3000;
